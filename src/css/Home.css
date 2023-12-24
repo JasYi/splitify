@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+h1.title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 6.375em;
+    color: #CBFFDE;
+    text-align: center;
+    margin-bottom: 0.2em;
+    margin-top: 0.3em;
+}
+
+.form{
+    margin: auto;
+}
+
+.text-input{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    background-color: black;
+    margin: auto;
+    display: block;
+    width: 35.625em;
+    height:  3.6em;
+    border-radius: 2em;
+    color: gray;
+    text-indent: 2em;
+    border: solid #878787;
+}
+
+.num-select{
+    background-color: rgba(0, 0, 0, 0.42);
+    width: 14.21125em;
+    height: 17.163125em;
+    margin:auto;
+    border-radius: 1.5em;
+    margin-top: 0.7em;
+
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.num-input{
+    /*text*/
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 4.80375em;
+    color: white;
+    /*scaling*/
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    opacity: 1.0;
+    /*alignment*/
+    position: absolute;
+    top: 25%;
+    /*border*/
+    border: solid #495057;
+    border-radius: 0.3em;
+    border-width: medium;
+}
+
+.num-label{
+    /*text*/
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 1.20125em;
+    /*alignment*/
+    position: absolute;
+    top: 10%;
+}
+
+.inc-button{
+    /*text*/
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    padding: 0px;
+    line-height: 1;
+    /*size*/
+    background-color: #1ED760;
+    width: 40px;
+    height: 40px;
+    /*border*/
+    border-radius: 2em;
+    border-color: transparent;
+    /*alignment*/
+    position: absolute;
+    top: 75%;
+}
+
+.minus{
+    left: 27%;
+}
+
+.plus{
+    right: 27%;
+}
+
+.submit-btn{
+    /*text*/
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: black;
+    /*background+sizing*/
+    background-color: #1ED760;
+    width: 7.505625em;
+    height: 3.0025em;
+    border-radius: 2em;
+    border-color: transparent;
+    /*alignment*/
+    margin: auto;
+    display: block;
+    margin-top: 1em;
+}
