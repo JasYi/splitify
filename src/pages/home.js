@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "../css/Home.css";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function Home() {
   // backend for incrementing the count variable
   let [count, setCount] = useState(3);
+  const [playlistUrl, setPlaylistUrl] = useState("");
+  const [checked, setChecked] = useState(false);
+  const navigate = useNavigate();
+  var api_url = "http://127.0.0.1:5000/authcode";
 
   function incrementVal() {
     count = count + 1;
@@ -19,35 +23,45 @@ export default function Home() {
     setCount(count);
   }
 
-  // OAuth for Spotify
-  var client_id = "CLIENT_ID";
-  var redirect_uri = "http://localhost:3000/callback";
-  const navigate = useNavigate();
+  // handling change of form elements
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setPlaylistUrl(value);
+  };
 
-  function auth() {
-    var state = Math.random().toString(36).substring(16);
-    var scope = "user-read-private user-read-email";
+  // handling change of checkbox
+  const handleClick = () => setChecked(!checked);
 
-    let url = new URL("https://accounts.spotify.com/authorize?");
-    let params = new URLSearchParams(url.search);
-    params.append("response_type", "code");
-    params.append("client_id", client_id);
-    params.append("scope", scope);
-    params.append("redirect_uri", redirect_uri);
-    params.append("state", state);
+  async function submitToAPI() {
+    const data = { playlist: playlistUrl, num: count, ideal: checked };
+    const searchParams = new URLSearchParams(data);
+    window.location.href = api_url + "?" + searchParams.toString();
 
-    navigate(url);
+    // window.location.href =
+    //   api_url +
+    //   createSearchParams({
+    //     playlist: playlistUrl,
+    //     num: count,
+    //     ideal: checked,
+    //   }).toString();
+
+    // call the api endpoint here, have to set up in flask first
   }
 
   return (
     <div>
       <h1 className="title">Splitify</h1>
+      <h3 className="subtitle">
+        Just a fun project to split your egregiously large playlists :)
+      </h3>
       <div className="form">
-        <form>
+        <form onSubmit={submitToAPI}>
           <input
             type="text"
             className="text-input"
             placeholder="Paste URL..."
+            value={playlistUrl}
+            onChange={handleChange}
           />
           <div className="num-select">
             <label className="num-label">Number of Playlists</label>
@@ -71,6 +85,15 @@ export default function Home() {
             >
               +
             </button>
+          </div>
+          <div className="reccomended-checkbox">
+            <input
+              type="checkbox"
+              className="rec-num"
+              value={checked}
+              onClick={handleClick}
+            />
+            <label>Find the reccomended number of playlists!</label>
           </div>
           <button type="submit" className="submit-btn">
             SUBMIT
