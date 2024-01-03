@@ -35,8 +35,7 @@ export default function Home() {
   async function submitToAPI() {
     const data = { playlist: playlistUrl, num: count, ideal: checked };
     const searchParams = new URLSearchParams(data);
-    alert("going to url: " + api_url + "?" + searchParams.toString());
-    console.log("going to url: " + api_url + "?" + searchParams.toString());
+    prompt("going to url: " + api_url + "?" + searchParams.toString());
     window.location.href = api_url + "?" + searchParams.toString();
 
     // window.location.href =
