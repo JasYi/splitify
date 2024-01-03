@@ -8,7 +8,7 @@ export default function Home() {
   const [playlistUrl, setPlaylistUrl] = useState("");
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
-  var api_url = "http://127.0.0.1:5000/authcode";
+  var api_url = "http://JasYi.pythonanywhere.com/authcode";
 
   function incrementVal() {
     count = count + 1;
