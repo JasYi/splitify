@@ -3,54 +3,12 @@ import "../css/Home.css";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function Home() {
-  // backend for incrementing the count variable
-  let [count, setCount] = useState(3);
-  const [playlistUrl, setPlaylistUrl] = useState("");
-  const [checked, setChecked] = useState(false);
-  const navigate = useNavigate();
-  var api_url = "http://jasyi.pythonanywhere.com/authcode";
+  const authEndpoint = "https://accounts.spotify.com/authorize";
+  const redirectUri = "https://splitify-jasyi.vercel.app//form";
+  const clientId = "1e6468d842fc486d9ae83b38b8ec164b";
+  const scopes = "playlist-modify-private";
 
-  function incrementVal() {
-    count = count + 1;
-    setCount(count);
-  }
-
-  function decrementVal() {
-    count = count - 1;
-    if (count <= 2) {
-      count = 2;
-    }
-    setCount(count);
-  }
-
-  // handling change of form elements
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPlaylistUrl(value);
-  };
-
-  // handling change of checkbox
-  const handleClick = () => setChecked(!checked);
-
-  async function submitToAPI() {
-    const data = { playlist: playlistUrl, num: count, ideal: checked };
-    const searchParams = new URLSearchParams(data);
-    prompt(
-      "copy to clipboard",
-      "going to url: " + api_url + "?" + searchParams.toString()
-    );
-    window.location.href = api_url + "?" + searchParams.toString();
-
-    // window.location.href =
-    //   api_url +
-    //   createSearchParams({
-    //     playlist: playlistUrl,
-    //     num: count,
-    //     ideal: checked,
-    //   }).toString();
-
-    // call the api endpoint here, have to set up in flask first
-  }
+  const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes}&response_type=code&show_dialog=true`;
 
   return (
     <div>
@@ -58,52 +16,15 @@ export default function Home() {
       <h3 className="subtitle">
         Just a fun project to split your egregiously large playlists :)
       </h3>
-      <div className="form">
-        <form onSubmit={submitToAPI}>
-          <input
-            type="text"
-            className="text-input"
-            placeholder="Paste URL..."
-            value={playlistUrl}
-            onChange={handleChange}
-          />
-          <div className="num-select">
-            <label className="num-label">Number of Playlists</label>
-            <input
-              type="text"
-              className="num-input"
-              value={count}
-              readOnly="true"
-            />
-            <button
-              className="inc-button minus"
-              onClick={decrementVal}
-              type="button"
-            >
-              -
-            </button>
-            <button
-              className="inc-button plus"
-              onClick={incrementVal}
-              type="button"
-            >
-              +
-            </button>
-          </div>
-          <div className="reccomended-checkbox">
-            <input
-              type="checkbox"
-              className="rec-num"
-              value={checked}
-              onClick={handleClick}
-            />
-            <label>Find the reccomended number of playlists!</label>
-          </div>
-          <button type="submit" className="submit-btn">
-            SUBMIT
-          </button>
-        </form>
-      </div>
+      <h2>How it works:</h2>
+      <ul className="instructions">
+        <li>1. Log in with Spotify</li>
+        <li>2. Specify how you want your playlist split</li>
+        <li>3. Get your playlists cut down to size!</li>
+      </ul>
+      <a href={loginUrl} className="auth-btn">
+        Log in With Spotify
+      </a>
     </div>
   );
 }

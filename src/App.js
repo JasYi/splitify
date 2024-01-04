@@ -1,6 +1,7 @@
 import "./css/App.css";
-import Home from "./pages/home";
+import Form from "./pages/form";
 import Results from "./pages/results";
+import Home from "./pages/home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/results" element={<Results/>}/>
+        <Route path="/form" element={<Form />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </BrowserRouter>
   );
