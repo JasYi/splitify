@@ -11,7 +11,7 @@ export default function Home() {
   const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes}&response_type=code&show_dialog=true`;
 
   return (
-    <div>
+    <div className="wrapper">
       <h1 className="title">Splitify</h1>
       <h3 className="subtitle">
         Just a fun project to split your egregiously large playlists :)
