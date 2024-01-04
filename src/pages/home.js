@@ -4,7 +4,7 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const authEndpoint = "https://accounts.spotify.com/authorize";
-  const redirectUri = "https://splitify-jasyi.vercel.app//form";
+  const redirectUri = "https://splitify-jasyi.vercel.app/form";
   const clientId = "1e6468d842fc486d9ae83b38b8ec164b";
   const scopes = "playlist-modify-private";
 
