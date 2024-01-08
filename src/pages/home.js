@@ -16,6 +16,7 @@ export default function Home() {
       <h3 className="subtitle">
         Just a fun project to split your egregiously large playlists :)
       </h3>
+      <h3>Currently in testing! Please email jason.yi2015@gmail.com to use.</h3>
       <h2>How it works:</h2>
       <ul className="instructions">
         <li>1. Log in with Spotify</li>
